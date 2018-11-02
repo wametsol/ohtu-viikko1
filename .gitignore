@@ -1,0 +1,6 @@
+# Ignore tmp-päätteet
+*.tmp
+
+# Ignore build - kansio
+
+build/
