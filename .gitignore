@@ -1,3 +1,18 @@
 /RiippuvuuksienInjektointi1/build/
+<<<<<<< HEAD
 /NhlStatistics1/.nb-gradle/
 /NhlStatistics1/build/
+=======
+
+# Ignore tmp-päätteet
+*.tmp
+
+# Ignore build - kansio
+
+build/
+
+#Gradlee
+.gradle/
+.nb-gradle
+gradle.properties
+>>>>>>> ff4f3f797e1c75616825f4a2ecc94326998e3e19
