@@ -8,3 +8,4 @@ build/
 #Gradlee
 .gradle/
 .nb-gradle
+gradle.properties
