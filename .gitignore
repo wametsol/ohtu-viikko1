@@ -4,3 +4,7 @@
 # Ignore build - kansio
 
 build/
+
+#Gradlee
+.gradle/
+.nb-gradle
