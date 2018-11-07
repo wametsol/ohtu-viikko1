@@ -11,13 +11,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class VarastoTest {
-
+    static final int kymppitilavuus = 10;
     Varasto varasto;
     double vertailuTarkkuus = 0.0001;
 
     @Before
     public void setUp() {
-        varasto = new Varasto(10);
+        varasto = new Varasto(kymppitilavuus);
     }
 
     @Test
