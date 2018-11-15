@@ -8,3 +8,16 @@ jar {
         attributes 'Main-Class': 'ohtu.Main'
     }
 }
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+// https://mvnrepository.com/artifact/com.google.code.gson/gson
+compile 'com.google.code.gson:gson:2.8.5'
+
+
+// https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc
+compile 'org.apache.httpcomponents:fluent-hc:4.5.6'
+}
