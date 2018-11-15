@@ -3,6 +3,7 @@ package ohtu.io;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class StubIO implements IO {
 
     private List<String> lines;
