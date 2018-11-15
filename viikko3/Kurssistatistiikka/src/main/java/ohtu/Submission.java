@@ -5,6 +5,15 @@ public class Submission {
     private String course;
     private int hours;
     private int[] exercises;
+    private int maxExercises;
+
+    public int getMaxExercises() {
+        return maxExercises;
+    }
+
+    public void setMaxExercises(int maxExercises) {
+        this.maxExercises = maxExercises;
+    }
 
     public int getHours() {
         return hours;
@@ -51,7 +60,7 @@ public class Submission {
 
     @Override
     public String toString() {
-        return ""+course + ", viikko " +week + ". Aikaa kului: " + hours + ". Tehtyja tehtavia yhteensa " + exercises.length + ", tehdyt tehtavat: " + exercises[0] + exerciseList();
+        return "Viikko " +week + ":\n Aikaa kului: " + hours + ". Tehtyja tehtavia yhteensa " + exercises.length + "/" + maxExercises +  ", tehdyt tehtavat: " + exercises[0] + exerciseList();
     }
     
 }
