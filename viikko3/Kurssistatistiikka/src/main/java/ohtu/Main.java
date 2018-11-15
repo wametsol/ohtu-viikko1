@@ -3,6 +3,8 @@ package ohtu;
 import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class Main {
 
@@ -18,9 +20,10 @@ public class Main {
         String bodyText = Request.Get(url).execute().returnContent().asString();
         
         String courseText = Request.Get("https://studies.cs.helsinki.fi/courses/courseinfo").execute().returnContent().asString();
+        
+        
 
         System.out.println("Opiskelijanumero: " + studentNr);
-        //System.out.println( bodyText );
 
         Gson mapper = new Gson();
         Submission[] subs = mapper.fromJson(bodyText, Submission[].class);
@@ -38,7 +41,6 @@ public class Main {
                 int tehtavat = 0; 
                     System.out.println(course.getFullName() + " " + course.getTerm()+ " " + course.getYear());
                     System.out.println("");
-                    //System.out.println(submission);
                     int i = 0;
                     for (Submission submission2 : subs) {
                         
@@ -55,6 +57,22 @@ public class Main {
                     }
                     System.out.println("");
                     System.out.println("Yhteensa: "+ tehtavat + "/" +course.getMaxExercises() + " tehtavaa, " + tunnit+ " tuntia.");
+                    System.out.println("");
+                    String courseInfo = Request.Get("https://studies.cs.helsinki.fi/courses/"+course.getName()+"/stats").execute().returnContent().asString();
+                    
+                    JsonParser parser = new JsonParser();
+                    JsonObject parsittuData = parser.parse(courseInfo).getAsJsonObject();
+                    
+
+                    int palautukset = 0;
+                    int palautetutTehtavat = 0;
+                    int totalTime = 0;
+                    for(int j=1;j<=parsittuData.size();j++){
+                        palautukset += parsittuData.get(""+j).getAsJsonObject().get("students").getAsInt();
+                        palautetutTehtavat += parsittuData.get(""+j).getAsJsonObject().get("exercise_total").getAsInt();
+                        totalTime += parsittuData.get(""+j).getAsJsonObject().get("hour_total").getAsInt();
+                    }
+                    System.out.println("Kurssilla yhteensa " + palautukset + " palautusta, palautettuja tehtavia " + palautetutTehtavat + " kpl, aikaa kaytetty yht " + totalTime + " tuntia.");
                     System.out.println("");
                 }
             }
