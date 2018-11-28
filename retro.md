@@ -1,0 +1,4 @@
+Ensimmäinen näistä eli "Start, Stop, Continue, More of, Less of Wheel" tarkoittaa käytännössä tilannetta jossa ryhmän ohjaaja/vetäjä muodostaa ryhmän palautteen käyttämällä viittä kategoriaa, joiden avulla rohkaistaan tiimin jäseniä tuomaan omat ideansa esiin. Lopuksi "tuloksia" tutkitaan ja keskustellaan tulevista hyväksyttävistä muutoksista. Ideana on saada palautetta koko tiimiprosessista, jotta opitaan mikä toimii ja mikä ei, mitä pitäisi parantaa ja mitä ei sekä mitä pitäisi tehdä enemmän ja mitä ei siirryttäessä eteenpäin. Tälläinen "palaveri" on melko nopea. Lopuksi palautteiden "vaihtaminen" tiimin sisällä
+
+
+Toinen "Glad, Sad, Mad" on nimensä mukaisesti melkolailla "risut ja ruusut". Eli pohditaan mistä on tyytyväinen kyseisessä projektissa ja mikä harmittaa. Eli laaditaan listat positiivisista ja negatiivisista asioista (sprintistä, tiimistä ja kaikesta siihen liittyvästä). Sen jälkeen äännestetään ongelmista ja ne käydään läpi tärkeysjärjestyksessä.
