@@ -2,8 +2,13 @@ package ohtu;
 
 public class TennisGame {
     
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    private int Player1_score = 0;
+    private int Player2_score = 0;
+    final int ZERO = 0;
+    final int ONE = 1;
+    final int TWO = 2;
+    final int THREE = 3;
+    final int FOUR = 4;
     private String player1Name;
     private String player2Name;
 
@@ -14,67 +19,100 @@ public class TennisGame {
 
     public void wonPoint(String playerName) {
         if (playerName == "player1")
-            m_score1 += 1;
+            Player1_score += ONE;
         else
-            m_score2 += 1;
+            Player2_score += ONE;
     }
+    
 
     public String getScore() {
-        String score = "";
-        int tempScore=0;
-        if (m_score1==m_score2)
-        {
-            switch (m_score1)
-            {
-                case 0:
-                        score = "Love-All";
-                    break;
-                case 1:
-                        score = "Fifteen-All";
-                    break;
-                case 2:
-                        score = "Thirty-All";
-                    break;
-                case 3:
-                        score = "Forty-All";
-                    break;
-                default:
-                        score = "Deuce";
-                    break;
-                
+        String gameSituationAsString = "";
+        
+        if (Player1_score==Player2_score){
+            gameSituationAsString = evenScore();
             }
-        }
-        else if (m_score1>=4 || m_score2>=4)
-        {
-            int minusResult = m_score1-m_score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
+        
+        else if (Player1_score>=FOUR || Player2_score>=FOUR){
+            gameSituationAsString = oneAdvantagesOrWins();
         }
         else
         {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
+            gameSituationAsString = midGame();
+            
+            }
+        
+        return gameSituationAsString;
+    }
+    
+    /** Method is called when game is not even and neither one has 40 points.
+     * 
+     * @return current score as string
+     */
+    public String midGame(){
+        String gameSituationAsString = "";
+        int currentPlayersScore=ZERO;
+        for (int i=ONE; i<THREE; i++){
+                if (i==ONE) currentPlayersScore = Player1_score;
+                else { gameSituationAsString+="-"; currentPlayersScore = Player2_score;}
+                switch(currentPlayersScore)
                 {
-                    case 0:
-                        score+="Love";
+                    case ZERO:
+                        gameSituationAsString+="Love";
                         break;
-                    case 1:
-                        score+="Fifteen";
+                    case ONE:
+                        gameSituationAsString+="Fifteen";
                         break;
-                    case 2:
-                        score+="Thirty";
+                    case TWO:
+                        gameSituationAsString+="Thirty";
                         break;
-                    case 3:
-                        score+="Forty";
+                    case THREE:
+                        gameSituationAsString+="Forty";
                         break;
                 }
-            }
-        }
-        return score;
+        
+    }
+        return gameSituationAsString;
+    }
+    /** Method is called when one player is either leading with a 40 score,
+     * or when one player wins.
+     * 
+     * @return current score as string
+     */
+    public String oneAdvantagesOrWins(){
+        String gameSituationAsString = "";
+        int situation = Player1_score-Player2_score;
+            if (situation==ONE) gameSituationAsString ="Advantage player1";
+            else if (situation ==-ONE) gameSituationAsString ="Advantage player2";
+            else if (situation>=TWO) gameSituationAsString = "Win for player1";
+            else gameSituationAsString ="Win for player2";
+        
+        return gameSituationAsString;
+    }
+    /** Method is called when game has an even score.
+     * 
+     * @return current score as string
+     */
+    public String evenScore(){
+        String gameSituationAsString = "";
+        switch (Player1_score)
+            {
+                case ZERO:
+                        gameSituationAsString = "Love-All";
+                    break;
+                case ONE:
+                        gameSituationAsString = "Fifteen-All";
+                    break;
+                case TWO:
+                        gameSituationAsString = "Thirty-All";
+                    break;
+                case THREE:
+                        gameSituationAsString = "Forty-All";
+                    break;
+                default:
+                        gameSituationAsString = "Deuce";
+                    break;
+                
+    }
+        return gameSituationAsString;
     }
 }
